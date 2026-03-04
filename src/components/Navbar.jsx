@@ -1,15 +1,18 @@
-const Navbar = () => {
+import { Link } from "react-router-dom";
+
+export default function Navbar() {
   return (
-    <nav className="flex justify-between items-center px-12 py-6 
-    bg-white/70 backdrop-blur-md border-b border-gray-200
-    sticky top-0 z-50">
+    <nav className="backdrop-blur-md bg-white/40 border-b border-[#A55B1E]/20 px-10 py-4 flex justify-between items-center">
+      <Link to="/" className="font-heading text-2xl text-[#A55B1E]">
+        Iftar Planner
+      </Link>
 
-      <h1 className="text-2xl text-[#A55B1E]">
-        Ramadan Planner 🌙
-      </h1>
-
+      <Link
+        to="/final"
+        className="bg-[#C39777] text-black px-5 py-2 rounded-md hover:scale-105 transition"
+      >
+        Final Review
+      </Link>
     </nav>
-  )
+  );
 }
-
-export default Navbar

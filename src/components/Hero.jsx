@@ -1,22 +1,13 @@
-import { motion } from "framer-motion";
-
-const Hero = () => {
+export default function Hero() {
   return (
-    <motion.section
-      className="text-center py-24"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
-      <h1 className="text-5xl font-heading text-[#D4AF37] mb-6">
-        Create Your Perfect Iftar
+    <section className="text-center py-20">
+      <h1 className="font-heading text-5xl text-[#A55B1E] mb-4">
+        Create Your Perfect Iftar Table
       </h1>
-
-      <p className="text-lg text-[#F5F3E7]">
-        Choose your dishes and build your Ramadan table ✨
+      <p className="text-black max-w-xl mx-auto">
+        Choose your main dish, sides, desserts, and drinks. 
+        Build your Ramadan table beautifully 🌙
       </p>
-    </motion.section>
-  )
+    </section>
+  );
 }
-
-export default Hero

@@ -1,43 +1,36 @@
-import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const FoodCard = ({ dish, onSelect }) => {
-  const navigate = useNavigate();
-
+export default function FoodCard({ dish, onSelect }) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.05 }}
-      className="min-w-[260px] bg-[#1C2541] rounded-2xl p-5 shadow-lg transition-all hover:shadow-[0_0_20px_rgba(212,175,55,0.6)]"
-    >
+    <div className="bg-white/60 backdrop-blur-md rounded-md shadow-md overflow-hidden border border-[#A55B1E]/10">
+
       <img
         src={dish.image}
         alt={dish.title}
-        className="rounded-xl mb-4 h-40 w-full object-cover"
+        className="w-full h-52 object-cover"
       />
 
-      <h3 className="font-heading text-xl text-[#D4AF37] mb-2">
-        {dish.title}
-      </h3>
+      <div className="p-4">
+        <h3 className="font-heading text-lg text-[#A55B1E] mb-2">
+          {dish.title}
+        </h3>
 
-      <p className="text-sm text-gray-300 mb-4">
-        ⏱ {dish.time}
-      </p>
+        <div className="flex justify-between items-center mt-3">
+          <button
+            onClick={() => onSelect(dish)}
+            className="text-[#A55B1E] text-2xl hover:scale-110 transition"
+          >
+            <i className='bx bx-plus-circle'></i>
+          </button>
 
-      <button
-        onClick={() => onSelect(dish)}
-        className="w-full mb-2 bg-[#D4AF37] text-black py-2 rounded-lg font-medium hover:scale-105 transition"
-      >
-        Add to Table
-      </button>
-
-      <button
-        onClick={() => navigate(`/recipe/${dish.id}`)}
-        className="w-full border border-[#D4AF37] text-[#D4AF37] py-2 rounded-lg hover:bg-[#D4AF37] hover:text-black transition"
-      >
-        View Recipe
-      </button>
-    </motion.div>
+          <Link
+            to={`/recipe/${dish.id}`}
+            className="bg-[#C39777] text-black px-4 py-1 rounded-md hover:scale-105 transition"
+          >
+            View Recipe
+          </Link>
+        </div>
+      </div>
+    </div>
   );
-}
-
-export default FoodCard
+} 

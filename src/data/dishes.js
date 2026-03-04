@@ -4,7 +4,7 @@ export const dishes = [
     id: 1,
     category: "main",
     title: "Chicken Tagine",
-    image: "/images/tagine.jpg",
+    image: "/assets/tagine.jpg",
     time: "1h 30min",
     description: "Traditional Moroccan chicken tagine.",
     recipe: "Step by step instructions..."
