@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
 
 export default function FinalReview() {
   const [selected, setSelected] = useState({});
@@ -42,6 +43,8 @@ export default function FinalReview() {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="min-h-screen flex flex-col items-center justify-center py-20">
 
       <h1 className="font-heading text-4xl text-[#A55B1E] mb-16">
@@ -73,5 +76,6 @@ export default function FinalReview() {
 
       </div>
     </div>
+    </>
   );
 }
