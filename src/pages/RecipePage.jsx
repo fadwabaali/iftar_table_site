@@ -1,18 +1,55 @@
 import { useParams } from "react-router-dom";
-import { dishes } from "../data/dishes";
+import { useEffect, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 
 const RecipePage = () => {
-  const { id } = useParams();
-  const dish = dishes.find((d) => d.id === parseInt(id));
 
-  if (!dish)
+  const { id } = useParams();
+  const [dish, setDish] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+
+    const fetchDish = async () => {
+      try {
+        const docRef = doc(db, "meals", id);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          setDish({ id: docSnap.id, ...docSnap.data() });
+        } else {
+          setDish(null);
+        }
+
+      } catch (error) {
+        console.error("Error fetching dish:", error);
+      }
+
+      setLoading(false);
+    };
+
+    fetchDish();
+
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-black">
+        Loading recipe...
+      </div>
+    );
+  }
+
+  if (!dish) {
     return (
       <div className="min-h-screen flex items-center justify-center text-black">
         Dish not found
       </div>
     );
+  }
 
   return (
     <>
@@ -49,6 +86,7 @@ const RecipePage = () => {
             </div>
 
           </div>
+
         </div>
       </motion.div>
     </>

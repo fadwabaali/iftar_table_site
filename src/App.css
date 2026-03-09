@@ -43,3 +43,8 @@ body::after {
 .font-heading {
   font-family: 'Playfair Display', serif;
 }
+
+button {
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
