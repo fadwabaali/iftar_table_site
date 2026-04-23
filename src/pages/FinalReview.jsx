@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
 import { FaMoon, FaUtensils, FaLeaf, FaIceCream, FaGlassWhiskey, FaPrint, FaShare, FaStar, FaClock, FaUsers, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -13,7 +12,7 @@ export default function FinalReview() {
     const saved = JSON.parse(localStorage.getItem("ramadanTable"));
     if (saved) {
       setSelected(saved);
-      setTimeout(() => setIsLoaded(true), 500); // Delay for animation
+      setTimeout(() => setIsLoaded(true), 500); 
     }
   }, []);
 
